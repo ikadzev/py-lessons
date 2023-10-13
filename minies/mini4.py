@@ -1,9 +1,13 @@
-dict = {"Ivanov": 97832, "Petrov": 55521, "Kuznecov": 97832}
-tcid = {dict[key] : key for key in dict.keys()}
-if len(dict.keys()) != len(tcid.keys()):
-    keys  = list(dict.keys())
-    values = list(tcid.values())
-    for x in values: keys.remove(x)
-    for key in keys:
-        tcid[dict[key]] = (tcid[dict[key]], key)
+dict = {"Ivanov": 97832, "Petrov": 55521, "Kuznecov": 97832, "Kuznebcov": 97832}
+tcid = {}
+for value, key in dict.items():
+    if key in tcid:
+        if type(tcid[key]) == tuple:
+            lsit = list(tcid[key])
+            lsit.append(value)
+            tcid[key] = tuple(lsit)
+        else:
+            tcid[key] = (tcid[key], value)
+    else:
+        tcid[key] = value
 print(tcid)
