@@ -5,7 +5,8 @@ def deprecated(f=None, *, since=None, will_be_removed=None):
         return partial(deprecated, since=since, will_be_removed=will_be_removed)
     
     def inner(*args, **kwargs):
-        print(f'Warning: function {f.__name__} is deprecated{f" since version {since}" if since else ""}. It will be removed in {f"version {will_be_removed}" if will_be_removed else "future versions"}. ') # (0w0)
+        print(f'Warning: function {f.__name__} is deprecated{f" since version {since}" if since else ""}. \
+It will be removed in {f"version {will_be_removed}" if will_be_removed else "future versions"}. ')
         ret = f(*args, **kwargs)
         return ret
     return inner

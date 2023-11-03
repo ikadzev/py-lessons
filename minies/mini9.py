@@ -15,6 +15,6 @@ def format_table(list1, list2, list3):
             print(f' {list3[i][j]:<{maxes[j+1]}} |', end='')
         print()
     
-format_table(["best case", "worst case"],
-             ["quick sort", "merge sort", "bubble sort"],
-             [[1.23, 1.5345345345346, 2.00], [3.3, 2.9, 3.9]]) 
+format_table(["basaaaaaaaaaaaaaaaaa", "w"],
+             ["quick sort", "merge sort", "bubble sort", "abrakadabvra"],
+             [[1.23, 1, 2.00, "a"], [3.3, 2.9, 3.9, "b"]]) 
