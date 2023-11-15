@@ -7,4 +7,5 @@ def flatten(lst):
             ret_list.append(x)
     return ret_list
 
+
 print(flatten([1, 2, [4, 5], [6, [7]], 8]))
