@@ -8,19 +8,17 @@ class Counter:
 class Singleton:
     singleton = None
     s_check = False
-    singleton_args = None
+    s_vars = {}
     def __new__(cls, *args, **kwargs):
-        if not cls.singleton:
-            cls.singleton = super().__new__(cls)
+        if not Singleton.singleton:
+            Singleton.singleton = super().__new__(cls)
         else:
             Singleton.s_check = True
-            Singleton.singleton_args = list(vars(cls.singleton).values())
-        return cls.singleton
+            Singleton.s_vars = vars(Singleton.singleton).items()
+        return Singleton.singleton
     def __init__(self, *args, **kwargs):
-        if Singleton.s_check:
-            super().__init__(*Singleton.singleton_args)
-        else:
-            super().__init__(*args, **kwargs)
+        if not Singleton.s_check:
+            super().__init__(*args, **kwargs) # AAAAAAAAAAAAAA WHY ITS SO EASY
 
 class GlobalCounter(Singleton, Counter):
     pass
