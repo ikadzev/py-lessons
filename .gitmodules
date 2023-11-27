@@ -4,3 +4,6 @@
 [submodule "labs/second-lab"]
 	path = labs/second-lab
 	url = https://github.com/nsu-syspro/python-2023-problem-2-2-ikadzev.git
+[submodule "labs/third-lab"]
+	path = labs/third-lab
+	url = https://github.com/nsu-syspro/python-2023-problem-3-1-ikadzev.git
