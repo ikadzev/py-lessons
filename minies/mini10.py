@@ -19,8 +19,7 @@ class LRUCache:
             index = self.entries[key][1]
             for c_key in self.entries.keys():
                 if self.entries[c_key][1] < index:
-                    self.entries[c_key] = (
-                        self.entries[c_key][0], self.entries[c_key][1] + 1)
+                    self.entries[c_key] = (self.entries[c_key][0], self.entries[c_key][1] + 1)
             self.entries[key] = (self.entries[key][0], 1)
             return self.entries[key][0] if key in self.entries.keys() else None
         except (KeyError):
