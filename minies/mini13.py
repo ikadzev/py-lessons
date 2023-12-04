@@ -1,4 +1,7 @@
+from functools import wraps
+
 def coroutine(f):
+    @wraps(f)
     def call_able(*args, **kwargs):
         f_temp = f()
         next(f_temp)

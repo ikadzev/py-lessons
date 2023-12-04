@@ -1,7 +1,6 @@
 def chain(*lists):
     for lst in lists:
-        for e in lst:
-            yield e
+        yield from lst
 
 
 my_list = [42, 13, 7]
