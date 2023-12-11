@@ -3,10 +3,13 @@ import matplotlib.pyplot as plt
 import numpy as np
 from time import time
 
-def game(field, iter, mode):
-    t = time()
-    init_field = c(field) 
+def game(field, iter):
+    t = 0
+    init_field = c(field)
+    _, ax = plt.subplots()
+    plt.ion()
     for _ in range(iter):
+        now = time()
         for i in range(len(field)):
             for j in range(len(field[i])):
                 life = int(init_field[i][j])
@@ -21,36 +24,22 @@ def game(field, iter, mode):
                 sum_of_life = sum(close)
                 if life:
                     if sum_of_life < 2 or sum_of_life > 3:
-                        field[i][j] = '0'
+                        field[i][j] = False
                 else:
                     if sum_of_life == 3:
-                        field[i][j] = '1'
-
-        for i in range(len(field)):
-            for j in range(len(field[i])):
-                print(field[i][j], end='') if int(field[i][j]) else print('_', end='')
-            print()
-        # fig, ax = plt.subplots()
-        # mat = ax.matshow(field)
-        # plt.show()   
-    t = time() - t
-    match mode:
-        case 't':
-            return f'Time is {t}, lives is {sum(field)}'
+                        field[i][j] = True
+        t += time() - now
+        ax.clear()
+        ax.matshow(field)
+        plt.show()
+        plt.pause(0.05)
+        init_field = c(field)
+    plt.close()
+    return t
     
-        
-init_field = np.random.choice(a=['0', '1'], size=(30, 30)).tolist()
-print('Choose mode:')
-print('1. Visual')
-print('2. Time')
-l = 128
-mode = None
-match input():
-    case 1:
-        mode = 'i'
-    case 2:
-        mode = 't'
-t_py = game(init_field, l, mode)
-t_np = game(init_field, l, mode)
+iters = 128
+init_field = np.random.choice(a=[False, True], size=(100, 100), p=[0.3, 0.7])
+t_py = game(init_field.tolist(), iters)
+t_np = game(init_field, iters)
 print('Py:', t_py)
 print('Numpy:', t_np)
